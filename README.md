@@ -1,7 +1,8 @@
 # Value Iteration Algorithm Package
 
-## The Problem
+## The Package
 
+This package contains code to carry out the value iteration algorithm for computing the optimal policy for an MDP and the asscoiated value. This package contains the python script with the value iteration function. It additioanlly conatins two examples, in the form of jupyter notebook files where each example is laid out and solved. Finally, there are also a few unit tests.
 
 ## The Value Iteration Algorithm
 
