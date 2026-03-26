@@ -61,7 +61,9 @@ Value_iteration(S,A,P,R,γ,ε,mode):
 Figure 9.16 provides pseudocode for the value iteration algorithm, though it is not too specific on some aspects. For example, it says to run a repeat loop until termination, but does not really mention what this actually means. 
 
 
-$\text{Mode 1:} \quad V[s] = \max_a \text{R(s,a)} + \gamma \Sigma_{s'} (\text{P(s'|s,a) * Vold\[s'\]}) \quad \text{(Matches 9.16)}$
+$$
+\text{Mode 1:} \quad V[s] = \max_a \text{R(s,a)} + \gamma \Sigma_{s'} (\text{P(s'|s,a) * Vold\[s'\]}) \quad \text{(Matches 9.16)}
+$$
 
 $\text{Mode 2:} \quad V[s] = max_a [sum_{s'} (P(s'|s,a) * (Vold[s'] * γ + R(s'|s,a)))]$
 
