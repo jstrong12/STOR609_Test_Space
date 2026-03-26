@@ -11,8 +11,8 @@ S = Set of States \
 A = Set of Actions \
 P = State Transition Function P(s'|s,a) \
 R = Reward Function R(s,a)/R(s'|s,a) \
-$\gamma$ = \
-$\epsilon$ = \
+$\gamma$ = Discount Factor\
+$\epsilon$ = Convergence Parameter\
 Mode = 1 if R is of the form R(s,a), 2 if R is of the form R(s'|s,a) 
 
 ### Output
@@ -58,13 +58,14 @@ Value_iteration(S,A,P,R,γ,ε,mode):
 
 ## How This Code Compares to Figure 9.16
 
-Figure 9.16 provides pseudocode for the value iteration algorithm, though it is not too specific on some aspects. For example, it says to run a repeat loop until termination, but does not really mention what this actually means. 
-
-
-$$
-\text{Mode 1:} \quad V[s] = \max_a \text{R(s,a)} + \gamma * \Sigma_{s'} (\text{P(s'|s,a) * Vold\[s'\]}) \quad \text{(Matches 9.16)}
-$$
+Figure 9.16 provides pseudocode for the value iteration algorithm, though it is not too specific on some aspects. For example, it says to run a repeat loop until termination, but does not really mention what this actually means. While in my code we run a while loop until we reach convergence as defined by our value of epsilon. This is one of the main differences, that my code takes gamma and epsilon as an input, while theirs does not. Their code and Q function are defined for the case where we have R(s,a), thus all the formulas in mode one of my code match the code in 9.16. This is fine for our Sam Weekend example, but is not enough for the Grid World Problem, which has a R(s'|s,a) style reward function. Therefore, I needed to find a different Q function for problems of that style which can be found in mode 2. The two functions can be found below:
 
 $$
-\text{Mode 2:} \quad V[s] = \max_a \Sigma_{s'} (\text{P(s'|s,a) * (Vold\[s'\]} * \gamma + \text{R(s'|s,a)}))
+\text{Mode 1:} \quad V[s] = \max_a (\text{R(s,a)} + \gamma * \Sigma_{s'} (\text{P(s'|s,a) * Vold\[s'\]})) \quad \text{(Matches 9.16)}
 $$
+
+$$
+\text{Mode 2:} \quad V[s] = \max_a (\Sigma_{s'} (\text{P(s'|s,a) * (Vold\[s'\]} * \gamma + \text{R(s'|s,a)})))
+$$
+
+Realistically I think I could have just used the Q function from Mode 2, but the task was to try and recreate the code from 9.16, so I thought it would be good to have both cases. The final difference I can spot is that I am pretty sure they are storing the values of V for all k, where my code only uses the current V and the one prior defined as Vold. I am not one hundred percent sure if this is what they are doing though as their pseudocode leaves a lot to interpretation.
