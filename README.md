@@ -17,8 +17,8 @@ Mode = 1 if R is of the form R(s,a) or 2 if R is of the form R(s'|s,a)
 
 ### Output
 
-V\[S\] = Value Function \
-$\pi$\[S\] = Optimal Policy
+V = Value Function \
+$\pi$ = Optimal Policy
 
 ### Pseudocode
 
