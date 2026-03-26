@@ -2,6 +2,7 @@
 
 ## The Problem
 
+
 ## The Value Iteration Algorithm
 
 ### Input
@@ -54,3 +55,5 @@ Value_iteration(S,A,P,R,γ,ε,mode):
             π[s] = max_a [sum_{s'} (P(s'|s,a) * (Vold[s'] * γ + R(s'|s,a)))]
         return π, V
 ```
+
+## How This Code Compares to 
