@@ -22,43 +22,35 @@ $\pi$\[S\] = Optimal Policy
 ### Pseudocode
 
 ```text
-Value_iteration(S, A, P, R, γ, ε, mode):
-
-    n1 = |S|
-    n2 = |A|
-    V = [0, 0, ..., 0]  (length n1)
-    π = [0, 0, ..., 0]  (length n1)
-    Diff = 1
+Value_iteration(S,A,P,R,γ,ε,mode):
+    n1 = Length of S
+    n2 = Length of A 
+    V = List of n1 zeros
+    π = List of n2 zeros
+    Diff = 1 
     k = 0
 
-    if mode == 1:
+    if mode = 1:
         while Diff > ε:
             k = k + 1
             Vold = V
-
             for each state s:
-                V[s] = max_a ( R(s,a) + γ * Σ_{s'} ( P(s'|s,a) * Vold[s'] ) )
-
-            Diff = max_s ( |V[s] - Vold[s]| )
+                V[s] = max_a R(s,a) + γ Σ_{s'} (P(s'|s,a) * Vold[s'])
+            Diff = max_s (|V[s] - Vold[s]|)
 
         for each state s:
-            π[s] = argmax_a ( R(s,a) + γ * Σ_{s'} ( P(s'|s,a) * Vold[s'] ) )
-
+            π[s] = max_a R(s,a) + γ Σ_{s'} (P(s'|s,a) * Vold[s'])
         return π, V
 
-
-    if mode == 2:
+    if mode = 2:
         while Diff > ε:
             k = k + 1
             Vold = V
-
             for each state s:
-                V[s] = max_a ( Σ_{s'} ( P(s'|s,a) * (γ * Vold[s'] + R(s',a)) ) )
-
-            Diff = max_s ( |V[s] - Vold[s]| )
+                V[s] = max_a Σ_{s'} (P(s'|s,a) * (Vold[s'] * γ + R(s'|s,a)))
+            Diff = max_s (|V[s] - Vold[s]|)
 
         for each state s:
-            π[s] = argmax_a ( Σ_{s'} ( P(s'|s,a) * (γ * Vold[s'] + R(s',a)) ) )
-
+            π[s] = max_a Σ_{s'} (P(s'|s,a) * (Vold[s'] * γ + R(s'|s,a)))
         return π, V
 ```
