@@ -56,4 +56,10 @@ Value_iteration(S,A,P,R,γ,ε,mode):
         return π, V
 ```
 
-## How This Code Compares to 
+## How This Code Compares to Figure 9.16
+
+Figure 9.16 provides pseudocode for the value iteration algorithm, though it is not too specific on some aspects. For example, it says to run a repeat loop until termination, but does not really mention what this actually means. 
+
+$$
+\gamma
+$$
