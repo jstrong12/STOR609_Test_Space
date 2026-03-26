@@ -62,8 +62,9 @@ Figure 9.16 provides pseudocode for the value iteration algorithm, though it is 
 
 
 $$
-\text{Mode 1:} \quad V[s] = \max_a \text{R(s,a)} + \gamma \Sigma_{s'} (\text{P(s'|s,a) * Vold\[s'\]}) \quad \text{(Matches 9.16)}
+\text{Mode 1:} \quad V[s] = \max_a \text{R(s,a)} + \gamma * \Sigma_{s'} (\text{P(s'|s,a) * Vold\[s'\]}) \quad \text{(Matches 9.16)}
 $$
 
-$\text{Mode 2:} \quad V[s] = max_a [sum_{s'} (P(s'|s,a) * (Vold[s'] * γ + R(s'|s,a)))]$
-
+$$
+\text{Mode 2:} \quad V[s] = \max_a \Sigma_{s'} (\text{P(s'|s,a) * (Vold\[s'\]} * \gamma + \text{R(s'|s,a)}))
+$$
