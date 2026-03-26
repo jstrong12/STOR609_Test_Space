@@ -10,10 +10,10 @@
 S = Set of States \
 A = Set of Actions \
 P = State Transition Function P(s'|s,a) \
-R = Reward Function R(s,a)/R(s'|s,a) \
+R = Reward Function R(s,a) or R(s'|s,a) \
 $\gamma$ = Discount Factor\
 $\epsilon$ = Convergence Parameter\
-Mode = 1 if R is of the form R(s,a), 2 if R is of the form R(s'|s,a) 
+Mode = 1 if R is of the form R(s,a) or 2 if R is of the form R(s'|s,a) 
 
 ### Output
 
