@@ -35,11 +35,11 @@ Value_iteration(S,A,P,R,γ,ε,mode):
             k = k + 1
             Vold = V
             for each state s:
-                V[s] = max_a R(s,a) + γ Σ_{s'} (P(s'|s,a) * Vold[s'])
+                V[s] = max_a [R(s,a) + γ * sum_{s'} (P(s'|s,a) * Vold[s'])]
             Diff = max_s (|V[s] - Vold[s]|)
 
         for each state s:
-            π[s] = max_a R(s,a) + γ Σ_{s'} (P(s'|s,a) * Vold[s'])
+            π[s] = max_a [R(s,a) + γ * sum_{s'} (P(s'|s,a) * Vold[s'])]
         return π, V
 
     if mode = 2:
@@ -47,10 +47,10 @@ Value_iteration(S,A,P,R,γ,ε,mode):
             k = k + 1
             Vold = V
             for each state s:
-                V[s] = max_a Σ_{s'} (P(s'|s,a) * (Vold[s'] * γ + R(s'|s,a)))
+                V[s] = max_a [sum_{s'} (P(s'|s,a) * (Vold[s'] * γ + R(s'|s,a)))]
             Diff = max_s (|V[s] - Vold[s]|)
 
         for each state s:
-            π[s] = max_a Σ_{s'} (P(s'|s,a) * (Vold[s'] * γ + R(s'|s,a)))
+            π[s] = max_a [sum_{s'} (P(s'|s,a) * (Vold[s'] * γ + R(s'|s,a)))]
         return π, V
 ```
